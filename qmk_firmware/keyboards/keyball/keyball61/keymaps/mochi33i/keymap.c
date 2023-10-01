@@ -68,7 +68,7 @@ uint16_t to_reset_time = 800; // この秒数(千分の一秒)、CLICKABLE状態
                               // click layer is disabled if in CLICKABLE state.
 
 const int16_t to_clickable_movement = 0; // クリックレイヤーが有効になるしきい値
-const uint16_t click_layer = 5; // マウス入力が可能になった際に有効になるレイヤー。Layers
+const uint16_t click_layer = 4; // マウス入力が可能になった際に有効になるレイヤー。Layers
                                 // enabled when mouse input is enabled
 
 int16_t mouse_record_threshold =
@@ -191,17 +191,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [1] = LAYOUT_universal(
     KC_GRV, S(KC_1)  , KC_LBRC  , S(KC_3)  , S(KC_4)  , S(KC_5)  ,                                  KC_EQL   , S(KC_6)    ,S(KC_QUOT), S(KC_8)  , S(KC_9)  ,S(KC_INT1),
-    S(KC_DEL), S(KC_Q)  , S(KC_W)  , S(KC_E)  , S(KC_R)  , S(KC_T)  ,                                  S(KC_Y)  , S(KC_U) ,S(KC_I)   , S(KC_O)  , S(KC_P)  , KC_BSLS,
+    S(KC_DEL), S(KC_Q)  , S(KC_W)  , S(KC_E)  , S(KC_R)  , S(KC_T)  ,                                  S(KC_Y)  , S(KC_U) ,S(KC_I)   , KC_LBRC  , KC_RBRC  , KC_BSLS,
     KC_GRV  , KC_EXLM  , KC_AT  ,   KC_HASH,   KC_DLR  ,   KC_PERC,                                    KC_CIRC, KC_AMPR   ,  KC_ASTR , KC_LPRN  , KC_RPRN  , KC_TILD,
-    _______,  _______  , _______, _______  , _______   , _______ , KC_LBRC,                   KC_RBRC, KC_EQL , KC_UNDS   , KC_PLUS  , KC_LCBR  , KC_RCBR  , KC_PIPE,
-
+    _______,  _______  , _______, _______  , KC_PLUS   , KC_MINS , KC_LBRC,                   KC_RBRC, KC_EQL , KC_UNDS   , KC_PLUS  , KC_LCBR  , KC_RCBR  , KC_PIPE,
     _______  ,S(KC_LCTL),S(KC_LALT),S(KC_LGUI), _______  , _______  , _______  ,            _______  , _______  , _______  ,S(KC_RGUI), _______  , S(KC_RALT), _______
   ),
 
   [2] = LAYOUT_universal(
     _______  , KC_F1    , KC_F2    , KC_F3    , KC_F4    , KC_F5    ,                                  KC_F6    , KC_F7    , KC_F8    , KC_F9    , KC_F10   , KC_F11   ,
     _______  , _______  , KC_7     , KC_8     , KC_9     , _______  ,                                  KC_VOLD  , KC_VOLU  , KC_MUTE  ,KC_BRID  ,  KC_BRIU  , KC_F12   ,
-    _______  , _______  , KC_4     , KC_5     , KC_6     ,S(KC_SCLN),                                  KC_LEFT  , KC_DOWN  ,  KC_UP   , KC_RGHT  , KC_BTN3  , KC_PGUP  ,
+    _______  , _______  , KC_4     , KC_5     , KC_6     ,S(KC_SCLN),                                  KC_LEFT  , KC_DOWN  ,  KC_UP   , KC_RGHT  ,S(KC_SCLN), KC_PGUP  ,
     _______  , _______ , KC_1     , KC_2     , KC_3     ,S(KC_MINS), S(KC_8)  ,            S(KC_9)  , KC_BTN4  , KC_BTN1  , KC_BTN3  , KC_BTN2  , KC_BTN5  , KC_PGDN  ,
     _______  , _______  , KC_0     , KC_DOT   , _______  , _______  , _______  ,             KC_DEL  , _______  , _______  , _______  , _______  , _______  , _______
   ),
@@ -213,14 +212,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______  , _______  , SCRL_DVD , SCRL_DVI , SCRL_MO  , SCRL_TO  , EE_CLR  ,            EE_CLR  , KC_HOME  , KC_PGDN  , KC_PGUP  , KC_END   , KBC_RST  , KC_PGDN  ,
     QK_BOOT    , _______  , KC_LEFT  , KC_DOWN  , KC_UP    , KC_RGHT  , _______  ,            _______  , KC_BSPC  , _______  , _______  , _______  , _______  , QK_BOOT
   ),
-  [4] = LAYOUT_universal(
-    KC_GRV, S(KC_1)  , KC_LBRC  , S(KC_3)  , S(KC_4)  , S(KC_5)  ,                                  KC_EQL   , S(KC_6)  ,S(KC_QUOT), S(KC_8)  , S(KC_9)  ,S(KC_INT1),
-    S(KC_DEL), S(KC_Q)  , S(KC_W)  , S(KC_E)  , S(KC_R)  , S(KC_T)  ,                                  S(KC_Y)  , S(KC_U)  , S(KC_I)  , S(KC_O)  , S(KC_P)  ,S(KC_INT3),
-    S(KC_TAB), S(KC_A)  , S(KC_S)  , S(KC_D)  , S(KC_F)  , S(KC_G)  ,                                  S(KC_H)  , S(KC_J)  , S(KC_K)  , S(KC_L)  , KC_QUOT  , S(KC_2)  ,
-    _______  , S(KC_Z)  , S(KC_X)  , S(KC_C)  , S(KC_V)  , S(KC_B)  ,S(KC_RBRC),           S(KC_NUHS), S(KC_N)  , S(KC_M)  ,S(KC_COMM), S(KC_DOT),S(KC_SLSH),S(KC_RSFT),
-    _______  ,S(KC_LCTL),S(KC_LALT),S(KC_LGUI), _______  , _______  , _______  ,            _______  , _______  , _______  ,S(KC_RGUI), _______  , S(KC_RALT), _______
-  ),
-    [5] = LAYOUT_universal(
+    [4] = LAYOUT_universal(
     _______  , _______  , _______  , _______  , _______  , _______  ,                                  _______  , _______  , _______  , _______  , _______  , _______  ,
     _______  , _______  , _______  , _______  , _______  , _______  ,                                  _______  , _______  , _______  , _______  , _______  , _______  ,
     _______  , _______  , _______  , _______  , _______  , _______  ,                                  _______  , _______  , _______  , _______  , _______  , _______  ,
@@ -406,7 +398,7 @@ layer_state_t layer_state_set_user(layer_state_t state)
     break;
 
   default:
-    rgblight_sethsv(HSV_OFF);
+    rgblight_sethsv(HSV_BLUE);
   }
 
   return state;
