@@ -202,14 +202,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______  , _______  , KC_P7     , KC_P8     , KC_P9     , _______  ,                                  KC_VOLD  , KC_VOLU  , KC_MUTE  ,KC_BRID  ,  KC_BRIU  , KC_F12   ,
     _______  , _______  , KC_P4     , KC_P5     , KC_P6     ,S(KC_SCLN),                                  KC_LEFT  , KC_DOWN  ,  KC_UP   , KC_RGHT  ,S(KC_SCLN), KC_PGUP  ,
     _______  , _______ , KC_P1     , KC_P2     , KC_P3     ,S(KC_MINS), S(KC_8)  ,            S(KC_9)  , KC_BTN4  , KC_BTN1  , KC_BTN3  , KC_BTN2  , KC_BTN5  , KC_PGDN  ,
-    _______  , _______  , KC_P0     , KC_PDOT   , _______  , _______  , _______  ,             KC_DEL  , _______  , _______  , _______  , _______  , _______  , _______
+    _______  , _______  , KC_P0     , KC_PDOT   , _______  , _______  , _______  ,             _______ , KC_DEL  , _______  , _______  , _______  , _______  , _______
   ),
 
   [3] = LAYOUT_universal(
     RGB_TOG  , _______  , _______  , _______  , _______  , _______  ,                                  RGB_M_P  , RGB_M_B  , RGB_M_R  , RGB_M_SW , RGB_M_SN , RGB_M_K  ,
     RGB_MOD  , RGB_HUI  , RGB_SAI  , RGB_VAI  , _______  , _______  ,                                  RGB_M_X  , RGB_M_G  , RGB_M_T  , RGB_M_TW , _______  , _______  ,
     RGB_RMOD , RGB_HUD  , RGB_SAD  , RGB_VAD  , _______  , _______  ,                                  CPI_D1K  , CPI_D100 , CPI_I100 , CPI_I1K  , KBC_SAVE , KC_PGUP  ,
-    KC_CAPS  , _______  , SCRL_DVD , SCRL_DVI , SCRL_MO  , SCRL_TO  , EE_CLR  ,            EE_CLR  , KC_HOME  , KC_PGDN  , KC_PGUP  , KC_END   , KBC_RST  , KC_PGDN  ,
+    KC_CAPS  , _______  , SCRL_DVD , SCRL_DVI , SCRL_MO  , SCRL_TO  , EE_CLR  ,            EE_CLR  , KC_HOME  , KC_HOME  , KC_INS  , KC_END   , KBC_RST  , KC_PGDN  ,
     QK_BOOT    , _______  , KC_LEFT  , KC_DOWN  , KC_UP    , KC_RGHT  , _______  ,            _______  , KC_BSPC  , _______  , _______  , _______  , _______  , QK_BOOT
   ),
     [4] = LAYOUT_universal(
