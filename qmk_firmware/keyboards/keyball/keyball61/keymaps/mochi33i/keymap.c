@@ -63,13 +63,15 @@ enum click_state
 uint16_t click_timer; // タイマー。状態に応じて時間で判定する。 Timer. Time to
                       // determine the state of the system.
 
-uint16_t to_reset_time = 800; // この秒数(千分の一秒)、CLICKABLE状態ならクリックレイヤーが無効になる。
-                              // For this number of seconds (milliseconds), the
-                              // click layer is disabled if in CLICKABLE state.
+uint16_t to_reset_time =
+    800; // この秒数(千分の一秒)、CLICKABLE状態ならクリックレイヤーが無効になる。
+         // For this number of seconds (milliseconds), the
+         // click layer is disabled if in CLICKABLE state.
 
 const int16_t to_clickable_movement = 0; // クリックレイヤーが有効になるしきい値
-const uint16_t click_layer = 4; // マウス入力が可能になった際に有効になるレイヤー。Layers
-                                // enabled when mouse input is enabled
+const uint16_t click_layer =
+    4; // マウス入力が可能になった際に有効になるレイヤー。Layers
+       // enabled when mouse input is enabled
 
 int16_t mouse_record_threshold =
     30; // ポインターの動きを一時的に記録するフレーム数。 Number of frames in
@@ -113,7 +115,6 @@ int16_t mmouse_move_y_sign(int16_t num) {
 
 // 現在クリックが可能な状態か。 Is it currently clickable?
 bool is_clickable_mode(void) { return state == CLICKABLE || state == CLICKING; }
-
 
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
   int16_t current_x = mouse_report.x;
@@ -185,7 +186,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     MC_ESC   , KC_1    , KC_2     , KC_3     , KC_4     , KC_5     ,                                  KC_6     , KC_7     , KC_8     , KC_9     , KC_0     , KC_GRV  ,
     KC_TAB   , KC_Q     , KC_W     , KC_E     , KC_R     , KC_T     ,                                  KC_Y     , KC_U     , KC_I     , KC_O     , KC_P     , KC_MINS  ,
     KC_LCTL   , KC_A     , KC_S     , KC_D     , KC_F     , KC_G     ,                                  KC_H     , KC_J     , KC_K     , KC_L     , KC_SCLN  , KC_QUOT  ,
-    KC_LSFT    , KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     , KC_RBRC  ,              KC_LBRC, KC_N     , KC_M     , KC_COMM  , KC_DOT   , KC_SLSH  , MC_RYCST  ,
+    KC_LSFT    , KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     , KC_LBRC  ,              KC_RBRC, KC_N     , KC_M     , KC_COMM  , KC_DOT   , KC_SLSH  , MC_RYCST  ,
     MO(4)  , KC_LCTL  , KC_LALT  , KC_LGUI,LT(1,KC_LNG2),LT(2,KC_SPC),LT(3,KC_LNG1),          LT(2,KC_ENT),KC_BSPC  ,_______   ,_______   , _______ , KC_LNG1  , KC_PSCR
   ),
 
@@ -223,15 +224,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 // clang-format on
 
-
 #ifdef OLED_ENABLE
 
-#    include "lib/oledkit/oledkit.h"
+#include "lib/oledkit/oledkit.h"
 
 void oledkit_render_info_user(void) {
-    keyball_oled_render_keyinfo();
-    keyball_oled_render_ballinfo();
-    keyball_oled_render_layerinfo();
+  keyball_oled_render_keyinfo();
+  keyball_oled_render_ballinfo();
+  keyball_oled_render_layerinfo();
 }
 #endif
 
@@ -299,16 +299,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   return true;
 }
-layer_state_t layer_state_set_user(layer_state_t state)
-{
+layer_state_t layer_state_set_user(layer_state_t state) {
   // レイヤーが1または3の場合、スクロールモードが有効になる
   keyball_set_scroll_mode(get_highest_layer(state) == 3);
-  // keyball_set_scroll_mode(get_highest_layer(state) == 1 || get_highest_layer(state) == 3);
+  // keyball_set_scroll_mode(get_highest_layer(state) == 1 ||
+  // get_highest_layer(state) == 3);
 
   // レイヤーとLEDを連動させる
   uint8_t layer = biton32(state);
-  switch (layer)
-  {
+  switch (layer) {
   case 4:
     rgblight_sethsv(HSV_WHITE);
     break;
@@ -319,5 +318,3 @@ layer_state_t layer_state_set_user(layer_state_t state)
 
   return state;
 }
-
-
