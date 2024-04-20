@@ -68,7 +68,7 @@ uint16_t to_reset_time =
          // For this number of seconds (milliseconds), the
          // click layer is disabled if in CLICKABLE state.
 
-const int16_t to_clickable_movement = 0; // クリックレイヤーが有効になるしきい値
+const int16_t to_clickable_movement = 2; // クリックレイヤーが有効になるしきい値
 const uint16_t click_layer =
     4; // マウス入力が可能になった際に有効になるレイヤー。Layers
        // enabled when mouse input is enabled
@@ -182,14 +182,16 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+  // main
   [0] = LAYOUT_universal(
     MC_ESC   , KC_1    , KC_2     , KC_3     , KC_4     , KC_5     ,                                  KC_6     , KC_7     , KC_8     , KC_9     , KC_0     , KC_GRV  ,
     KC_TAB   , KC_Q     , KC_W     , KC_E     , KC_R     , KC_T     ,                                  KC_Y     , KC_U     , KC_I     , KC_O     , KC_P     , KC_MINS  ,
     KC_LCTL   , KC_A     , KC_S     , KC_D     , KC_F     , KC_G     ,                                  KC_H     , KC_J     , KC_K     , KC_L     , KC_SCLN  , KC_QUOT  ,
     KC_LSFT    , KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     , KC_LBRC  ,              KC_RBRC, KC_N     , KC_M     , KC_COMM  , KC_DOT   , KC_SLSH  , MC_RYCST  ,
-    MO(4)  , KC_LCTL  , KC_LALT  , KC_LGUI,LT(1,KC_LNG2),LT(2,KC_SPC),LT(3,KC_LNG1),          LT(2,KC_ENT),KC_BSPC  ,_______   ,_______   , _______ , KC_LNG1  , KC_PSCR
+    MO(4)  ,  TG(5)     , KC_LALT  , KC_LGUI,LT(1,KC_LNG2),LT(2,KC_SPC),LT(3,KC_LNG1),          LT(2,KC_ENT),KC_BSPC  ,_______   ,_______   , _______ , KC_LNG1  , KC_PSCR
   ),
 
+  //記号レイヤー
   [1] = LAYOUT_universal(
     KC_GRV, S(KC_1)  , KC_LBRC  , S(KC_3)  , S(KC_4)  , S(KC_5)  ,                                  KC_EQL   , S(KC_6)    ,S(KC_QUOT), S(KC_8)  , S(KC_9)  ,S(KC_INT1),
     S(KC_DEL), S(KC_Q)  , S(KC_W)  , S(KC_E)  , S(KC_R)  , S(KC_T)  ,                                  S(KC_Y)  , S(KC_U) ,S(KC_I)   , KC_LBRC  , KC_RBRC  , KC_BSLS,
@@ -198,6 +200,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______  ,S(KC_LCTL),S(KC_LALT),S(KC_LGUI), _______  , _______  , _______  ,            _______  , _______  , _______  ,S(KC_RGUI), _______  , S(KC_RALT), _______
   ),
 
+  //テンキーandマウスレイヤー
   [2] = LAYOUT_universal(
     _______  , KC_F1    , KC_F2    , KC_F3    , KC_F4    , KC_F5    ,                                  KC_F6    , KC_F7    , KC_F8    , KC_F9    , KC_F10   , KC_F11   ,
     _______  , _______  , KC_P7     , KC_P8     , KC_P9     , _______  ,                                  KC_VOLD  , KC_VOLU  , KC_MUTE  ,KC_BRID  ,  KC_BRIU  , KC_F12   ,
@@ -205,6 +208,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______  , _______ , KC_P1     , KC_P2     , KC_P3     ,S(KC_MINS), S(KC_8)  ,            S(KC_9)  , KC_BTN4  , KC_BTN1  , KC_BTN3  , KC_BTN2  , KC_BTN5  , KC_PGDN  ,
     _______  , _______  , KC_P0     , KC_PDOT   , _______  , _______  , _______  ,             _______ , KC_DEL  , _______  , _______  , _______  , _______  , _______
   ),
+  // その他
 
   [3] = LAYOUT_universal(
     RGB_TOG  , _______  , _______  , _______  , _______  , _______  ,                                  RGB_M_P  , RGB_M_B  , RGB_M_R  , RGB_M_SW , RGB_M_SN , RGB_M_K  ,
@@ -213,13 +217,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_CAPS  , _______  , SCRL_DVD , SCRL_DVI , SCRL_MO  , SCRL_TO  , EE_CLR  ,            EE_CLR  , KC_HOME  , KC_HOME  , KC_INS  , KC_END   , KBC_RST  , KC_PGDN  ,
     QK_BOOT    , _______  , KC_LEFT  , KC_DOWN  , KC_UP    , KC_RGHT  , _______  ,            _______  , KC_BSPC  , _______  , _______  , _______  , _______  , QK_BOOT
   ),
+  // マウスだけ
     [4] = LAYOUT_universal(
     _______  , _______  , _______  , _______  , _______  , _______  ,                                  _______  , _______  , _______  , _______  , _______  , _______  ,
     _______  , _______  , _______  , _______  , _______  , _______  ,                                  _______  , _______  , _______  , _______  , _______  , _______  ,
     _______  , _______  , _______  , _______  , _______  , _______  ,                                  _______  , _______  , _______  , _______  , _______  , _______  ,
     _______  , _______  , _______  , _______  , _______  , _______  , _______  ,            _______  , _______  ,KC_MY_BTN1, KC_MY_BTN3  ,KC_MY_BTN2, _______  , _______  ,
     _______  , _______  , _______  , _______  , _______  , _______  , _______  ,            _______  , _______  , _______  , _______  , _______  , _______  , _______
-  )
+  ),
+  // げーむだけ
+  [5] = LAYOUT_universal(
+    _______  , _______  , _______  , _______  , _______  , _______  ,                                  _______  , _______  , _______  , _______  , _______  , _______  ,
+    _______  , _______  , _______  , _______  , _______  , _______  ,                                  _______  , _______  , _______  , _______  , _______  , _______  ,
+    _______  , _______  , _______  , _______  , _______  , _______  ,                                  _______  , _______  , _______  , _______  , _______  , _______  ,
+    _______  , _______  , _______  , _______  , _______  , _______  , _______  ,            _______  , _______  ,_______   , _______  ,_______   , _______  , _______  ,
+    MO(4)  , TG(5)      , KC_LALT  , KC_LGUI  ,KC_LNG2   ,KC_SPC    ,KC_LNG1   ,          LT(2,KC_ENT),KC_BSPC   ,_______   ,_______   , _______  , KC_LNG1  , KC_PSCR
+  ),
 
 };
 // clang-format on
