@@ -184,19 +184,19 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // main
   [0] = LAYOUT_universal(
-    MC_ESC   , KC_1    , KC_2     , KC_3     , KC_4     , KC_5     ,                                  KC_6     , KC_7     , KC_8     , KC_9     , KC_0     , KC_GRV  ,
+    MC_ESC   , KC_1     , KC_2     , KC_3     , KC_4     , KC_5     ,                                  KC_6     , KC_7     , KC_8     , KC_9     , KC_0     , KC_GRV  ,
     KC_TAB   , KC_Q     , KC_W     , KC_E     , KC_R     , KC_T     ,                                  KC_Y     , KC_U     , KC_I     , KC_O     , KC_P     , KC_MINS  ,
-    KC_LCTL   , KC_A     , KC_S     , KC_D     , KC_F     , KC_G     ,                                  KC_H     , KC_J     , KC_K     , KC_L     , KC_SCLN  , KC_QUOT  ,
-    KC_LSFT    , KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     , KC_LBRC  ,              KC_RBRC, KC_N     , KC_M     , KC_COMM  , KC_DOT   , KC_SLSH  , MC_RYCST  ,
+    KC_LCTL  , KC_A     , KC_S     , KC_D     , KC_F     , KC_G     ,                                  KC_H     , KC_J     , KC_K     , KC_L     , KC_SCLN  , KC_QUOT  ,
+    KC_LSFT  , KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     , KC_LBRC  ,              KC_RBRC, KC_N     , KC_M     , KC_COMM  , KC_DOT   , KC_SLSH  , MC_RYCST  ,
     MO(4)  ,  TG(5)     , KC_LALT  , KC_LGUI,LT(1,KC_LNG2),LT(2,KC_SPC),LT(3,KC_LNG1),          LT(2,KC_ENT),KC_BSPC  ,_______   ,_______   , _______ , KC_LNG1  , KC_PSCR
   ),
 
   //記号レイヤー
   [1] = LAYOUT_universal(
-    KC_GRV, S(KC_1)  , KC_LBRC  , S(KC_3)  , S(KC_4)  , S(KC_5)  ,                                  KC_EQL   , S(KC_6)    ,S(KC_QUOT), S(KC_8)  , S(KC_9)  ,S(KC_INT1),
+    KC_GRV   , S(KC_1)  , KC_LBRC  , S(KC_3)  , S(KC_4)  , S(KC_5)  ,                                  KC_EQL   , S(KC_6)    ,S(KC_QUOT), S(KC_8)  , S(KC_9)  ,S(KC_INT1),
     S(KC_DEL), S(KC_Q)  , S(KC_W)  , S(KC_E)  , S(KC_R)  , S(KC_T)  ,                                  S(KC_Y)  , S(KC_U) ,S(KC_I)   , KC_LBRC  , KC_RBRC  , KC_BSLS,
-    KC_GRV  , KC_EXLM  , KC_AT  ,   KC_HASH,   KC_DLR  ,   KC_PERC,                                    KC_CIRC, KC_AMPR   ,  KC_ASTR , KC_LPRN  , KC_RPRN  , KC_TILD,
-    _______,  _______  , _______, _______  , KC_PLUS   , KC_MINS , KC_LBRC,                   KC_RBRC, KC_EQL , KC_UNDS   , KC_PLUS  , KC_LCBR  , KC_RCBR  , KC_PIPE,
+    KC_GRV   , KC_EXLM  , KC_AT    ,   KC_HASH,   KC_DLR  ,   KC_PERC,                                    KC_CIRC, KC_AMPR   ,  KC_ASTR , KC_LPRN  , KC_RPRN  , KC_TILD,
+    _______  ,  _______ , _______  , _______  , KC_PLUS   , KC_MINS , KC_LBRC,                   KC_RBRC, KC_EQL , KC_UNDS   , KC_PLUS  , KC_LCBR  , KC_RCBR  , KC_PIPE,
     _______  ,S(KC_LCTL),S(KC_LALT),S(KC_LGUI), _______  , _______  , _______  ,            _______  , _______  , _______  ,S(KC_RGUI), _______  , S(KC_RALT), _______
   ),
 
@@ -205,16 +205,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______  , KC_F1    , KC_F2    , KC_F3    , KC_F4    , KC_F5    ,                                  KC_F6    , KC_F7    , KC_F8    , KC_F9    , KC_F10   , KC_F11   ,
     _______  , _______  , KC_P7     , KC_P8     , KC_P9     , _______  ,                                  KC_VOLD  , KC_VOLU  , KC_MUTE  ,KC_BRID  ,  KC_BRIU  , KC_F12   ,
     _______  , _______  , KC_P4     , KC_P5     , KC_P6     ,S(KC_SCLN),                                  KC_LEFT  , KC_DOWN  ,  KC_UP   , KC_RGHT  ,S(KC_SCLN), KC_PGUP  ,
-    _______  , _______ , KC_P1     , KC_P2     , KC_P3     ,S(KC_MINS), S(KC_8)  ,            S(KC_9)  , KC_BTN4  , KC_BTN1  , KC_BTN3  , KC_BTN2  , KC_BTN5  , KC_PGDN  ,
+    _______  , _______ , KC_P1     ,  KC_P2     , KC_P3     ,S(KC_MINS), S(KC_8)  ,            S(KC_9)  , KC_BTN4  , KC_BTN1  , KC_BTN3  , KC_BTN2  , KC_BTN5  , KC_PGDN  ,
     _______  , _______  , KC_P0     , KC_PDOT   , _______  , _______  , _______  ,             _______ , KC_DEL  , _______  , _______  , _______  , _______  , _______
   ),
   // その他
 
   [3] = LAYOUT_universal(
     RGB_TOG  , _______  , _______  , _______  , _______  , _______  ,                                  RGB_M_P  , RGB_M_B  , RGB_M_R  , RGB_M_SW , RGB_M_SN , RGB_M_K  ,
-    RGB_MOD  , KC_1     , KC_2     , KC_3     , KC_4     , KC_5     ,                                  KC_6     , KC_7     , KC_8     , KC_9     , KC_0     , _______  ,
-    RGB_RMOD ,S(KC_1)  , KC_LBRC  , S(KC_3)  , S(KC_4)  , S(KC_5)  ,                                   S(KC_6)    ,S(KC_QUOT), S(KC_8)  , S(KC_9), S(KC_0)  , KC_PGUP  ,
-    KC_CAPS  , _______  , SCRL_DVD , SCRL_DVI , SCRL_MO  , SCRL_TO  , EE_CLR  ,            EE_CLR  , KC_HOME  , KC_HOME  , KC_INS  , KC_END   , KBC_RST  , KC_PGDN  ,
+    MC_ESC   , KC_1     , KC_2     , KC_3     , KC_4     , KC_5     ,                                  KC_6     , KC_7     , KC_8     , KC_9     , KC_0     , _______  ,
+    RGB_RMOD ,S(KC_1)  , S(KC_2)  , S(KC_3)  , S(KC_4)  , S(KC_5)  ,                                   S(KC_6)    ,S(KC_7) , S(KC_8)  , S(KC_9)  , S(KC_0)  , KC_PGUP  ,
+    KC_CAPS  , _______  , SCRL_DVD , SCRL_DVI , SCRL_MO  , SCRL_TO  , EE_CLR  ,               EE_CLR  , KC_HOME  , KC_HOME  , KC_INS  , KC_END   , KBC_RST  , KC_PGDN  ,
     QK_BOOT    , _______  , KC_LEFT  , KC_DOWN  , KC_UP    , KC_RGHT  , _______  ,            _______  , KC_BSPC  , _______  , _______  , _______  , _______  , QK_BOOT
   ),
   // マウスだけ
